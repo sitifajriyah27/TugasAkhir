@@ -25,7 +25,7 @@ class DataikanController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tambahdataikan');
     }
 
     /**
@@ -36,7 +36,17 @@ class DataikanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+    		'nama_ikan' => 'required',
+    		'harga_ikan' => 'required'
+    	]);
+ 
+        Dataikan::create([
+    		'nama_ikan' => $request->nama_ikan,
+    		'harga_ikan' => $request->harga_ikan
+    	]);
+ 
+    	return redirect('/dataikan');
     }
 
     /**
@@ -71,11 +81,21 @@ class DataikanController extends Controller
      */
     public function update(Request $request, Dataikan $dataikan)
     {
-        $request->validate([
-            'nama' => $request->nama,
-            'harga' => $request->harga, 
-        ]);
-        return Tpi::firstWhere('id_ikan', $dataikan->id_ikan)->update($fields);
+        $this->validate($request,[
+            'nama_ikan' => 'required',
+            'harga_ikan' => 'required'
+         ]);
+         $dataikan->nama_ikan = $request->nama_ikan;
+         $dataikan->harga_ikan = $request->harga_ikan;
+         $dataikan->save();
+         return redirect('/dataikan');
+        
+    }
+
+    public function delete(Dataikan $dataikan)
+    {
+        $dataikan->delete();
+        return redirect('/dataikan');
     }
 
     /**

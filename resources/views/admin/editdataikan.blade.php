@@ -4,6 +4,8 @@
 @include("layouts/navbar")
 @include("layouts/sidebar")
 
+<form method="post" action="/editdataikan/{{ $dataikan->id_ikan }}">
+ @csrf
 <div class="main-content">
 <section class="section">
           <div class="section-header">
@@ -20,9 +22,10 @@
                     </div>
                     <div class="form-group">
                       <label>Harga Ikan</label>
-                      <input type="text" class="form-control"name="harga_ikan" value="{{ $dataikan->harga_ikan }}">
+                      <input type="text" class="form-control" name="harga_ikan" value="{{ $dataikan->harga_ikan }}">
                     </div>
                     <div class="card-footer text-right">
                     <button class="btn btn-primary mr-1" type="submit">Confirm</button>
                     <button class="btn btn-secondary" type="reset">Reset</button>
                   </div>
+</form>

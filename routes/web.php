@@ -44,18 +44,12 @@ Route::post('/storetpi',[TpiController::class,'storetpi']);
 
 Route::get('/edittpi/{tpi}',[TpiController::class,'edit']);
 
-// Route::get('/dataikan', function () {
-//     return view("admin/dataikan");
-// });
 Route::get('/dataikan',[DataikanController::class,'index']);
-
-Route::get('/tambahdataikan', function () {
-    return view("admin/tambahdataikan");
-});
-// Route::get('/editdataikan', function () {
-//     return view("admin/editdataikan");
-// });
+Route::get('/tambahdataikan',[DataikanController::class,'create']);
+Route::post('/dataikan/store',[DataikanController::class,'store']);
 Route::get('/editdataikan/{dataikan}',[DataikanController::class,'edit']);
+Route::post('/editdataikan/{dataikan}',[DataikanController::class,'update']);
+Route::get('/hapusdataikan/{dataikan}',[DataikanController::class,'delete']);
 
 // Route::get('/nelayan', function () {
 //     return view("admin/nelayan");
