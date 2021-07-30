@@ -1,15 +1,15 @@
 @extends("layouts/main")
-@section("title","Tambah User")
+@section("title","Tambah Koperasi")
 @section("content")
 @include("layouts/navbar")
 @include("layouts/sidebar")
 
-<form method="post" action="/user/store">
+<form method="post" action="/koperasi/store">
   @csrf
 <div class="main-content">
 <section class="section">
           <div class="section-header">
-            <h1>Tambah Data User</h1>
+            <h1>Tambah Koperasi</h1>
           </div>
           <div class="section-body">
           <div class="row">
@@ -18,16 +18,9 @@
                   <div class="card-body">
                     <div class="form-group">
                       
-                      <label>Nama TPI</label>
+                      <label>Nama Koperasi</label>
                       <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror">
                       @error('nama')
-                          <div class="invalid-feedback">{{ $message }}</div>
-                      @enderror
-                    </div>
-                    <div class="form-group">
-                      <label>Username</label>
-                      <input type="text" name="username" class="form-control @error('username') is-invalid @enderror">
-                      @error('username')
                           <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
                     </div>
@@ -35,6 +28,13 @@
                       <label>Email</label>
                       <input type="text" name="email" class="form-control @error('email') is-invalid @enderror">
                       @error('email')
+                          <div class="invalid-feedback">{{ $message }}</div>
+                      @enderror
+                    </div>
+                    <div class="form-group">
+                      <label>Username</label>
+                      <input type="text" name="username" class="form-control @error('username') is-invalid @enderror">
+                      @error('username')
                           <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
                     </div>
@@ -52,7 +52,7 @@
                           <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
                     </div>
-                    
+                 
                   
                     <div class="card-footer text-right">
                     <button class="btn btn-primary mr-1" type="submit">Submit</button>

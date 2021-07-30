@@ -1,9 +1,11 @@
 @extends("layouts/main")
-@section("title","tambahtpi")
+@section("title","Tambah Koperasi")
 @section("content")
 @include("layouts/navbar")
 @include("layouts/sidebar")
 
+<form method="post" action="/tpi/store">
+  @csrf
 <div class="main-content">
 <section class="section">
           <div class="section-header">
@@ -15,30 +17,21 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="form-group">
-                      <form method="POST" action="{{ url('storetpi') }}" id="id_tpi">
-                        @csrf
                       <label>Nama</label>
-                      <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label>Username</label>
-                      <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label>Password</label>
-                      <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label>No Telepon</label>
-                      <input type="text" class="form-control">
+                      <input type="text" name="nama_tpi" class="form-control">
                     </div>
                     <div class="form-group">
                       <label>Alamat</label>
-                      <input type="text" class="form-control">
+                      <input type="text" name="alamat_tpi" class="form-control">
                     </div>
+                   <div class="form-group">
+                      <label>No Telepon</label>
+                      <input type="text" name="notelp_tpi" class="form-control">
+                    </div>
+                    
                   
                     <div class="card-footer text-right">
                     <button class="btn btn-primary mr-1" type="submit">Submit</button>
                     <button class="btn btn-secondary" type="reset">Reset</button>
-                  </form>
                   </div>
+                </form>

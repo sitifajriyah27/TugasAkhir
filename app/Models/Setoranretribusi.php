@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Alattangkap extends Model
+class Setoranretribusi extends Model
 {
     use HasFactory;
-    protected $primaryKey='id_alat';
+    protected $primaryKey='id_setoran';
     protected $fillable = [
-        'nama_alat',
-        'stok'
+        'tgl', 'tonage', 'raman', 'retribusi', 'ket'
     ];
 
     protected $hidden = [];

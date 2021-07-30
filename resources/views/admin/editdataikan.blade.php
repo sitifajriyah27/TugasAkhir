@@ -1,5 +1,5 @@
 @extends("layouts/main")
-@section("title","editdataikan")
+@section("title","Edit Data Ikan")
 @section("content")
 @include("layouts/navbar")
 @include("layouts/sidebar")
@@ -20,10 +20,10 @@
                       <label>Nama Ikan</label>
                       <input type="text" class="form-control" name="nama_ikan" value="{{ $dataikan->nama_ikan }}">
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                       <label>Harga Ikan</label>
                       <input type="text" class="form-control" name="harga_ikan" value="{{ $dataikan->harga_ikan }}">
-                    </div>
+                    </div> --}}
                     <div class="card-footer text-right">
                     <button class="btn btn-primary mr-1" type="submit">Confirm</button>
                     <button class="btn btn-secondary" type="reset">Reset</button>

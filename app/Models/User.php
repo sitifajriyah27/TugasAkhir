@@ -16,12 +16,16 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $primaryKey = 'id_user';
     protected $fillable = [
         'nama',
         'email',
         'username',
         'password',
+        'telepon',
+        'alamat',
         'level',
+        'image',
     ];
 
     /**
@@ -31,7 +35,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
+        'remember_token'
     ];
 
     /**

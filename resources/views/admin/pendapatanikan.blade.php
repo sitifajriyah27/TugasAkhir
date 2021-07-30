@@ -1,5 +1,5 @@
 @extends("layouts/main")
-@section("title","Nelayan")
+@section("title","Pendapatan Ikan")
 @section("content")
 @include("layouts/navbar")
 @include("layouts/sidebar")
@@ -7,34 +7,36 @@
 <div class="main-content">
 <section class="section">
           <div class="section-header">
-            <h1>Data Nelayan</h1>
+            <h1>Pendapatan Ikan</h1>
           </div>
+
           <div class="section-body">
             <div class="row">
               <div class="col">
                 <div class="card">
                   <div class="card-header">
-                  <a href="{{url('tambahnelayan')}}" class="btn btn-success">Tambah</a>
+                  <a href="{{url('#')}}" class="btn btn-success">Tambah</a>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
                       <table class="table table-bordered table-md">
                         <tr>
-                          <th>No</th>
-                          <th>Nama Nelayan</th>
-                          <th>No. Telepon</th>
-                          <th>Alamat</th>
-                          <th>Aksi</th>
+                          <th>Keterangan</th>
+                          <th>Satuan</th>
+                          <th>Koperasi Primer</th>
+                          <th>Cabang Koperasi</th>
+                          <th>Jumlah</th>
                         </tr>
-                        @foreach($nelayan as $n)
+                        @foreach($pendapatan as $p)
                         <tr>
-                          <td>{{$loop->iteration}}</td>
-                          <td>{{$n->nama_nelayan}}</td>
-                          <td>{{$n->notelp_nelayan}}</td>
-                          <td>{{$n->alamat_nelayan}}</div></td>
+                          <td>{{$p->ket}}</td>
+                          <td>{{$p->satuan}}</td>
+                          <td>{{$p->kptk}}</td>
+                          <td>{{$p->ck}}</td>
+                          <td>{{$p->jumlah}}</td>
                           <td>
-                            <a href="editnelayan/{{ $n->id_nelayan }}" class="btn btn-primary mr-2">Edit</a>
-                            <a href="hapusnelayan/{{ $n->id_nelayan }}" class="btn btn-danger">hapus</a>
+                            <a href="editdataikan/{{ $p->id_pendapatan }}" class="btn btn-primary mr-2">Edit</a>
+                            <a href="hapusdataikan/{{ $p->id_pendapatan }}" class="btn btn-danger">hapus</a>
                           </td>
                         </tr>
                         @endforeach

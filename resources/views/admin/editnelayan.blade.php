@@ -1,9 +1,11 @@
 @extends("layouts/main")
-@section("title","editnelayan")
+@section("title","Edit Nelayan")
 @section("content")
 @include("layouts/navbar")
 @include("layouts/sidebar")
 
+<form method="post" action="/editnelayan/{{ $nelayan->id_nelayan }}">
+  @csrf
 <div class="main-content">
 <section class="section">
           <div class="section-header">
@@ -19,14 +21,16 @@
                       <input type="text" class="form-control" name="nama_nelayan" value="{{ $datanelayan->nama_nelayan }}">
                     </div>
                     <div class="form-group">
-                      <label>No Telepon</label>
-                      <input type="text" class="form-control" name="no_telp" value="{{ $datanelayan->notelp_nelayan }}">
+                      <label>Alamat</label>
+                      <input class="form-control" name="alamat_nelayan" value="{{ $datanelayan->alamat_nelayan }}">
                     </div>
                     <div class="form-group">
-                      <label>Alamat</label>
-                      <input class="form-control" name="alamat" value="{{ $datanelayan->alamat_nelayan }}">
+                      <label>No Telepon</label>
+                      <input type="text" class="form-control" name="notelp_nelayan" value="{{ $datanelayan->notelp_nelayan }}">
                     </div>
+                    
                     <div class="card-footer text-right">
                     <button class="btn btn-primary mr-1" type="submit">Confirm</button>
                     <button class="btn btn-secondary" type="reset">Reset</button>
                   </div>
+                </form>

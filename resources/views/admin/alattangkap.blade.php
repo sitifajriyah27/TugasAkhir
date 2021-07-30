@@ -1,5 +1,5 @@
 @extends("layouts/main")
-@section("title","alattangkap")
+@section("title","Alat Tangkap")
 @section("content")
 @include("layouts/navbar")
 @include("layouts/sidebar")
@@ -15,7 +15,7 @@
               <div class="col">
                 <div class="card">
                   <div class="card-header">
-                  <a href="{{url('tambahalattangkap')}}" class="btn btn-success">Tambah</a>
+                  <a href="{{url('tambahalat')}}" class="btn btn-success">Tambah</a>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
@@ -23,12 +23,14 @@
                         <tr>
                           <th>No</th>
                           <th>Nama Alat Tangkap</th>
+                          <th>Stok</th>
                           <th>Aksi</th>
                         </tr>
                         @foreach($alattangkap as $at)
                         <tr>
-                          <td>{{$at->id_alat}}</td>
+                          <td>{{$loop->iteration}}</td>
                           <td>{{$at->nama_alat}}</td>
+                          <td>{{$at->stok}}</td>
                           <td>
                             <a href="editalattangkap/{{ $at->id_alat }}" class="btn btn-primary mr-2">Edit</a>
                             <a href="hapusalattangkap/{{ $at->id_alat }}" class="btn btn-danger">hapus</a>

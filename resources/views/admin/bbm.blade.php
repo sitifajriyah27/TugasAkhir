@@ -1,5 +1,5 @@
 @extends("layouts/main")
-@section("title","bbm")
+@section("title","BBM")
 @section("content")
 @include("layouts/navbar")
 @include("layouts/sidebar")
@@ -15,7 +15,7 @@
               <div class="col">
                 <div class="card">
                   <div class="card-header">
-                  <a href="{{url('tambabbm')}}" class="btn btn-success">Tambah</a>
+                  <a href="{{url('tambahbbm')}}" class="btn btn-success">Tambah</a>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
@@ -30,7 +30,7 @@
                         </tr>
                         @foreach($bbm as $b)
                         <tr>
-                          <td>{{$b->id_bhnbakar}}</td>
+                          <td>{{$loop->iteration}}</td>
                           <td>{{$b->merk_mesin}}</td>
                           <td>{{$b->type_mesin}}</td>
                           <td>{{$b->kecepatan}}</td>

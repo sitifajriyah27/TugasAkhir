@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 class UserController extends Controller
 {
     /**
@@ -15,8 +16,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all();
+        $user = User::where('level', 'TPI')->get();
         return view('admin.user', compact('user'));
+    }
+
+    public function koperasi()
+    {
+        $user = User::where('level', 'koperasi')->get();
+        return view('admin.koperasi', compact('user'));
     }
 
     /**
@@ -26,7 +33,11 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tambahuser');
+    }
+    public function createKoperasi()
+    {
+        return view('admin.tambahkoperasi');
     }
 
     /**
@@ -37,8 +48,51 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+    		'nama' => 'required',
+    		'username' => 'required|unique:users,username',
+    		'email' => 'required|unique:users,email',
+            'telepon' => 'required',
+            'alamat' => 'required',
+    	]);
+ 
+        User::create([
+    		'nama' => $request->nama,
+    		'username' => $request->username,
+            'password' => Hash::make('admintpi123'),
+    		'email' => $request->email,
+            'telepon' => $request->telepon,
+    		'alamat' => $request->alamat,
+            'level' => 'TPI',
+    		'image' => 'default.png'
+    	]);
+ 
+    	return redirect('/user');
     }
+    public function storeKoperasi(Request $request)
+    {
+        $this->validate($request,[
+    		'nama' => 'required',
+    		'username' => 'required|unique:users,username',
+    		'email' => 'required|unique:users,email',
+            'telepon' => 'required',
+            'alamat' => 'required',
+    	]);
+ 
+        User::create([
+    		'nama' => $request->nama,
+    		'username' => $request->username,
+            'password' => Hash::make('koperasi123'),
+    		'email' => $request->email,
+            'telepon' => $request->telepon,
+    		'alamat' => $request->alamat,
+            'level' => 'koperasi',
+    		'image' => 'default.png'
+    	]);
+ 
+    	return redirect('/koperasi');
+    }
+
 
     /**
      * Display the specified resource.
@@ -57,9 +111,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editTPI($user)
     {
-        //
+        $user = User::where('id_user', $user)->first();
+        return view('admin.edituser', compact('user'));
+    }
+    public function editKoperasi($user)
+    {
+        $user = User::where('id_user', $user)->first();
+        return view('admin.editkoperasi', compact('user'));
     }
 
     /**
@@ -69,9 +129,54 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateTPI(Request $request, User $user)
     {
-        //
+        $this->validate($request,[
+            'nama' => 'required',
+    		'username' => 'required|' . Rule::unique('users')->ignore($user->id_user, 'id_user'),
+    		'email' => 'required|' . Rule::unique('users')->ignore($user->id_user, 'id_user'),
+            'telepon' => 'required',
+            'alamat' => 'required',
+         ]);
+         User::where('id_user',$user->id)->update([
+            'nama' => $request->nama,
+            'username' => $request->username,
+            'email' => $request->email,
+            'telepon' => $request->telepon,
+            'alamat' => $request->alamat,
+         ]);
+        
+         return redirect('/user');
+    }
+    public function updateKoperasi(Request $request, User $user)
+    {
+        $this->validate($request,[
+            'nama' => 'required',
+    		'username' => 'required|' . Rule::unique('users')->ignore($user->id_user, 'id_user'),
+    		'email' => 'required|'. Rule::unique('users')->ignore($user->id_user, 'id_user'),
+            'telepon' => 'required',
+            'alamat' => 'required',
+         ]);
+         User::where('id_user',$user->id_user)->update([
+            'nama' => $request->nama,
+            'username' => $request->username,
+            'email' => $request->email,
+            'telepon' => $request->telepon,
+            'alamat' => $request->alamat,
+         ]);
+        
+         return redirect('/koperasi');
+    }
+
+    public function deleteTPI(User $user)
+    {
+        $user->delete();
+        return redirect('/user');
+    }
+    public function deleteKoperasi(User $user)
+    {
+        $user->delete();
+        return redirect('/koperasi');
     }
 
     /**

@@ -1,5 +1,5 @@
 @extends("layouts/main")
-@section("title","tambahdataikan")
+@section("title","Tambah Data Ikan")
 @section("content")
 @include("layouts/navbar")
 @include("layouts/sidebar")
@@ -27,10 +27,10 @@
                       @endif
 
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                       <label>Harga Ikan</label>
                       <input type="text" name="harga_ikan" class="form-control">
-                    </div>
+                    </div> --}}
                     <div class="card-footer text-right">
                     <button class="btn btn-primary mr-1" type="submit">Submit</button>
                     <button class="btn btn-secondary" type="reset">Reset</button>

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Alattangkap;
+use App\Models\Nelayan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class AlattangkapController extends Controller
+class NelayanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,8 @@ class AlattangkapController extends Controller
      */
     public function index()
     {
-        $alattangkap = Alattangkap::all();
-        return view('admin.alattangkap', compact('alattangkap'));
+        $nelayan = Nelayan::all();
+        return view('koperasi.nelayan', compact('nelayan'));
     }
 
     /**
@@ -26,7 +25,7 @@ class AlattangkapController extends Controller
      */
     public function create()
     {
-        return view('admin.tambahalat');
+        return view('koperasi.tambahnelayan');
     }
 
     /**
@@ -38,17 +37,18 @@ class AlattangkapController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-    		'nama_alat' => 'required',
-            'stok' => 'required'
+    		'nama_nelayan' => 'required',
+    		'alamat_nelayan' => 'required',
+            'notelp_nelayan' => 'required'
     	]);
  
-        Alattangkap::create([
-    		'nama_alat' => $request->nama_alat,
-    		'stok' => $request->stok
-            
+        Nelayan::create([
+    		'nama_nelayan' => $request->nama_nelayan,
+    		'alamat_nelayan' => $request->alamat_nelayan,
+            'notelp_nelayan' => $request->notelp_nelayan
     	]);
  
-    	return redirect('/alattangkap');
+    	return redirect('/nelayan');
     }
 
     /**
@@ -68,10 +68,10 @@ class AlattangkapController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Alattangkap $alattangkap)
+    public function edit(Nelayan $nelayan)
     {
-        $alattangkap = Alattangkap::where('id_alat', $alattangkap->id_alat)->first();
-        return view('admin.editalattangkap', compact('alattangkap'));
+        $datanelayan = Nelayan::where('id_nelayan', $nelayan->id_nelayan)->first();
+        return view('koperasi.editnelayan', compact('datanelayan'));
     }
 
     /**
@@ -81,22 +81,24 @@ class AlattangkapController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Alattangkap $alattangkap)
+    public function update(Request $request, Nelayan $nelayan)
     {
         $this->validate($request,[
-            'nama_alat' => 'required',
-            'nama_alat' => 'required'
+            'nama_nelayan' => 'required',
+    		'alamat_nelayan' => 'required',
+            'notelp_nelayan' => 'required'
          ]);
-         $alattangkap->nama_alat = $request->nama_alat;
-         $alattangkap->stok = $request->stok;
-         $alattangkap->save();
-         return redirect('/alattangkap');
+         $nelayan->nama_nelayan = $request->nama_nelayan;
+         $nelayan->alamat_nelayan = $request->alamat_nelayan;
+         $nelayan->notelp_nelayan = $request->notelp_nelayan;
+         $nelayan->save();
+         return redirect('/nelayan');
     }
 
-    public function delete(Alattangkap $alattangkap)
+    public function delete(Nelayan $nelayan)
     {
-        $alattangkap->delete();
-        return redirect('/alattangkap');
+        $nelayan->delete();
+        return redirect('/nelayan');
     }
 
     /**

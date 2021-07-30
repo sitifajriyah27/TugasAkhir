@@ -25,7 +25,7 @@ class NelayanController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tambahnelayan');
     }
 
     /**
@@ -36,7 +36,19 @@ class NelayanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+    		'nama_nelayan' => 'required',
+    		'alamat_nelayan' => 'required',
+            'notelp_nelayan' => 'required'
+    	]);
+ 
+        Nelayan::create([
+    		'nama_nelayan' => $request->nama_nelayan,
+    		'alamat_nelayan' => $request->alamat_nelayan,
+            'notelp_nelayan' => $request->notelp_nelayan
+    	]);
+ 
+    	return redirect('/nelayan');
     }
 
     /**
@@ -71,12 +83,22 @@ class NelayanController extends Controller
      */
     public function update(Request $request, Nelayan $nelayan)
     {
-        $request->validate([
-            'nama' => $request->nama,
-            'notelp' => $request->notelp,
-            'alamat' => $request->alamat,    
-        ]);
-        return Nelayan::firstWhere('id_nelayan', $nelayan->id_nelayan)->update($fields);
+        $this->validate($request,[
+            'nama_nelayan' => 'required',
+    		'alamat_nelayan' => 'required',
+            'notelp_nelayan' => 'required'
+         ]);
+         $nelayan->nama_nelayan = $request->nama_nelayan;
+         $nelayan->alamat_nelayan = $request->alamat_nelayan;
+         $nelayan->notelp_nelayan = $request->notelp_nelayan;
+         $nelayan->save();
+         return redirect('/nelayan');
+    }
+
+    public function delete(Nelayan $nelayan)
+    {
+        $nelayan->delete();
+        return redirect('/nelayan');
     }
 
     /**

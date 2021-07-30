@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Alattangkap;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class AlattangkapController extends Controller
+class DaftarproduksiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,8 @@ class AlattangkapController extends Controller
      */
     public function index()
     {
-        $alattangkap = Alattangkap::all();
-        return view('admin.alattangkap', compact('alattangkap'));
+        $daftarproduksi = Daftarproduksi::all();
+        return view('admin.daftarproduksi', compact('daftarproduksi'));
     }
 
     /**
@@ -26,7 +24,7 @@ class AlattangkapController extends Controller
      */
     public function create()
     {
-        return view('admin.tambahalat');
+        //
     }
 
     /**
@@ -37,18 +35,7 @@ class AlattangkapController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-    		'nama_alat' => 'required',
-            'stok' => 'required'
-    	]);
- 
-        Alattangkap::create([
-    		'nama_alat' => $request->nama_alat,
-    		'stok' => $request->stok
-            
-    	]);
- 
-    	return redirect('/alattangkap');
+        //
     }
 
     /**
@@ -68,10 +55,9 @@ class AlattangkapController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Alattangkap $alattangkap)
+    public function edit($id)
     {
-        $alattangkap = Alattangkap::where('id_alat', $alattangkap->id_alat)->first();
-        return view('admin.editalattangkap', compact('alattangkap'));
+        //
     }
 
     /**
@@ -81,22 +67,9 @@ class AlattangkapController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Alattangkap $alattangkap)
+    public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'nama_alat' => 'required',
-            'nama_alat' => 'required'
-         ]);
-         $alattangkap->nama_alat = $request->nama_alat;
-         $alattangkap->stok = $request->stok;
-         $alattangkap->save();
-         return redirect('/alattangkap');
-    }
-
-    public function delete(Alattangkap $alattangkap)
-    {
-        $alattangkap->delete();
-        return redirect('/alattangkap');
+        //
     }
 
     /**

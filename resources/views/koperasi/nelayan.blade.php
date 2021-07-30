@@ -2,7 +2,7 @@
 @section("title","Nelayan")
 @section("content")
 @include("layouts/navbar")
-@include("layouts/sidebar")
+@include("layouts/sidebar-koperasi")
 
 <div class="main-content">
 <section class="section">

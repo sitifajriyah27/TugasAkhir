@@ -25,7 +25,7 @@ class TpiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function tambahtpi()
+    public function create()
     {
         return view('admin.tambahtpi');
     }
@@ -36,6 +36,22 @@ class TpiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function store(Request $request)
+    {
+        $this->validate($request,[
+    		'nama_tpi' => 'required',
+    		'alamat_tpi' => 'required',
+            'notelp_tpi' => 'required'
+    	]);
+ 
+        Tpi::create([
+    		'nama_tpi' => $request->nama_tpi,
+    		'alamat_tpi' => $request->alamat_tpi,
+            'notelp_tpi' => $request->notelp_tpi
+    	]);
+ 
+    	return redirect('/tpi');
+    }
 
     /**
      * Display the specified resource.
@@ -69,16 +85,23 @@ class TpiController extends Controller
      */
     public function update(Request $request, Tpi $tpi)
     {
-
-        //validasi  sesuai nama di input
+        $this->validate($request,[
+            'nama_tpi' => 'required',
+    		'alamat_tpi' => 'required',
+            'notelp_tpi' => 'required'
+         ]);
+         $tpi->nama_tpi = $request->nama_tpi;
+         $tpi->alamat_tpi = $request->alamat_tpi;
+         $tpi->notelp_tpi = $request->notelp_tpi;
+         $tpi->save();
+         return redirect('/tpi');
         
-        //kiri sesuai field ditabel dan kanan ambil dari name input
-        $request->validate([
-            'nama' => $request->nama,
-            'notelp' => $request->notelp,
-            'alamat' => $request->alamat,    
-        ]);
-        return Tpi::firstWhere('id_tpi', $tpi->id_tpi)->update($fields);
+    }
+
+    public function delete(Tpi $tpi)
+    {
+        $tpi->delete();
+        return redirect('/tpi');
     }
 
     /**

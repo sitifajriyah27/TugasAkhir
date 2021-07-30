@@ -1,5 +1,5 @@
 @extends("layouts/main")
-@section("title","dataikan")
+@section("title","Data Ikan")
 @section("content")
 @include("layouts/navbar")
 @include("layouts/sidebar")
@@ -23,14 +23,12 @@
                         <tr>
                           <th>No</th>
                           <th>Nama Ikan</th>
-                          <th>Harga/Kg</th>
                           <th>Aksi</th>
                         </tr>
                         @foreach($dataikan as $d)
                         <tr>
-                          <td>{{$d->id_ikan}}</td>
+                          <td>{{$loop->iteration}}</td>
                           <td>{{$d->nama_ikan}}</td>
-                          <td>{{$d->harga_ikan}}</td>
                           <td>
                             <a href="editdataikan/{{ $d->id_ikan }}" class="btn btn-primary mr-2">Edit</a>
                             <a href="hapusdataikan/{{ $d->id_ikan }}" class="btn btn-danger">hapus</a>

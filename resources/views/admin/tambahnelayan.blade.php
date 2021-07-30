@@ -1,5 +1,5 @@
 @extends("layouts/main")
-@section("title","tambahnelayan")
+@section("title","Tambah Nelayan")
 @section("content")
 @include("layouts/navbar")
 @include("layouts/sidebar")

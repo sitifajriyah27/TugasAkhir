@@ -1,21 +1,14 @@
 <div class="main-sidebar">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="index.html">Disklankan</a>
+            <a href="index.html">Koperasi</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
             <a href="index.html">St</a>
           </div>
           <ul class="sidebar-menu">
               <li><a class="nav-link" href="{{url('dashboard')}}"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>  
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown" href="#"><i class="far fa-user"></i> <span>User</span></a>
-                <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="{{url('user')}}">Admin TPI</a></li>
-                  <li><a class="nav-link" href="{{url('koperasi')}}">Admin Koperasi</a></li>
-                </ul>
-              </li>
-              <li><a class="nav-link" href="{{url('tpi')}}"><i class="fas fa-fire"></i> <span>Koperasi</span></a></li>
+              <li><a class="nav-link" href="{{url('datatpi')}}"><i class="fas fa-fire"></i> <span>TPI</span></a></li>
               <li><a class="nav-link" href="{{url('dataikan')}}"><i class="fas fa-columns"></i> <span>Data Ikan</span></a></li>
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-anchor"></i> <span>Nelayan</span></a>

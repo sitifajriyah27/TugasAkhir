@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Alattangkap extends Model
+class Daftarproduksi extends Model
 {
     use HasFactory;
-    protected $primaryKey='id_alat';
+    protected $primaryKey='id_dp';
     protected $fillable = [
-        'nama_alat',
-        'stok'
+        'tanggal', 'raman', 'tonage'
     ];
 
     protected $hidden = [];

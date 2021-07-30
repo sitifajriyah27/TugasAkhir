@@ -1,5 +1,5 @@
 @extends("layouts/main")
-@section("title","tpi")
+@section("title","Koperasi")
 @section("content")
 @include("layouts/navbar")
 @include("layouts/sidebar")
@@ -7,7 +7,7 @@
 <div class="main-content">
 <section class="section">
           <div class="section-header">
-            <h1>Data TPI</h1>
+            <h1>Data Koperasi</h1>
           </div>
 
           <div class="section-body">
@@ -24,16 +24,16 @@
                         <tr>
                           <th>No</th>
                           <th>Nama TPI</th>
-                          <th>No. Telepon</th>
                           <th>Alamat</th>
+                          <th>No. Telepon</th>
                           <th>Aksi</th>
                         </tr>
                         @foreach($tpi as $t)
                         <tr>
-                          <td>{{$t->id_tpi}}</td>
+                          <td>{{$loop->iteration}}</td>
                           <td>{{$t->nama_tpi}}</td>
-                          <td>{{$t->notelp_tpi}}</td>
-                          <td>{{$t->alamat_tpi}}</div></td>
+                          <td>{{$t->alamat_tpi}}</div>
+                          <td>{{$t->notelp_tpi}}</td></td>
                           <td>
                             <a href="edittpi/{{ $t->id_tpi }}" class="btn btn-primary mr-2">Edit</a>
                             <a href="hapustpi/{{ $t->id_tpi }}" class="btn btn-danger">hapus</a>
