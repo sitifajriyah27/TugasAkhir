@@ -6,10 +6,11 @@
 
 <form method="post" action="/edituser/{{ $user->id_user }}">
  @csrf
+ @method("PUT")
 <div class="main-content">
 <section class="section">
           <div class="section-header">
-            <h1>Edit Data TPI</h1>
+            <h1>Edit TPI</h1>
           </div>
           <div class="section-body">
           <div class="row">
@@ -30,13 +31,13 @@
                           <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label>Email</label>
                         <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}">
                         @error('email')
                           <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                       <label>Telepon</label>
                       <input type="text" class="form-control @error('telepon') is-invalid @enderror" name="telepon" value="{{ $user->telepon }}">

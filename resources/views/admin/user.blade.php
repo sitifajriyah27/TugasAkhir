@@ -25,7 +25,7 @@
                           <th>No</th>
                           <th>Nama TPI</th>
                           <th>Username</th>
-                          <th>Email</th>
+                          {{-- <th>Email</th> --}}
                           <th>Telepon</th>
                           <th>Alamat</th>
                           <th>Level</th>
@@ -37,7 +37,7 @@
                           <td>{{$loop->iteration}}</td>
                           <td>{{$u->nama}}</td>
                           <td>{{$u->username}}</td>
-                          <td>{{$u->email}}</td>
+                          {{-- <td>{{$u->email}}</td> --}}
                           <td>{{$u->telepon}}</td>
                           <td>{{$u->alamat}}</td>
                           <td>{{$u->level}}</td>

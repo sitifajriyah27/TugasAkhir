@@ -25,7 +25,7 @@
                           <th>No</th>
                           <th>Nama Koperasi</th>
                           <th>Username</th>
-                          <th>Email</th>
+                          {{-- <th>Email</th> --}}
                           <th>Telepon</th>
                           <th>Alamat</th>
                           <th>Level</th>
@@ -38,7 +38,7 @@
                           <td>{{$loop->iteration}}</td>
                           <td>{{$k->nama}}</td>
                           <td>{{$k->username}}</td>
-                          <td>{{$k->email}}</td>
+                          {{-- <td>{{$k->email}}</td> --}}
                           <td>{{$k->telepon}}</td>
                           <td>{{$k->alamat}}</td>
                           <td>{{$k->level}}</td>

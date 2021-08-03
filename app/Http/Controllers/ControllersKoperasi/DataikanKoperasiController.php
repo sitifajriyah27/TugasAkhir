@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Models\Nelayan;
+namespace App\Http\Controllers\ControllersKoperasi;
+use App\Http\Controllers\ControllerKoperasi;
+use App\Models\Dataikan;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class NelayanController extends Controller
+class DataikanKoperasiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,9 @@ class NelayanController extends Controller
      */
     public function index()
     {
-        $nelayan = Nelayan::all();
-        return view('koperasi.nelayan', compact('nelayan'));
+        $dataikan = Dataikan::all();
+        return view('koperasi.dataikankoperasi', compact('dataikan'));
+        
     }
 
     /**
@@ -25,7 +27,7 @@ class NelayanController extends Controller
      */
     public function create()
     {
-        return view('koperasi.tambahnelayan');
+        return view('koperasi.tambahdataikankoperasi');
     }
 
     /**
@@ -37,18 +39,16 @@ class NelayanController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-    		'nama_nelayan' => 'required',
-    		'alamat_nelayan' => 'required',
-            'notelp_nelayan' => 'required'
+    		'nama_ikan' => 'required',
+    		'harga_ikan' => 'required'
     	]);
  
-        Nelayan::create([
-    		'nama_nelayan' => $request->nama_nelayan,
-    		'alamat_nelayan' => $request->alamat_nelayan,
-            'notelp_nelayan' => $request->notelp_nelayan
+        Dataikan::create([
+    		'nama_ikan' => $request->nama_ikan,
+    		'harga_ikan' => $request->harga_ikan
     	]);
  
-    	return redirect('/nelayan');
+    	return redirect('/dataikankoperasi');
     }
 
     /**
@@ -68,10 +68,10 @@ class NelayanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Nelayan $nelayan)
+    public function edit(Dataikan $dataikan)
     {
-        $datanelayan = Nelayan::where('id_nelayan', $nelayan->id_nelayan)->first();
-        return view('koperasi.editnelayan', compact('datanelayan'));
+        $dataikan = Dataikan::where('id_ikan', $dataikan->id_ikan)->first();
+        return view('koperasi.editdataikankoperasi', compact('dataikankoperasi'));
     }
 
     /**
@@ -81,24 +81,23 @@ class NelayanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Nelayan $nelayan)
+    public function update(Request $request, Dataikan $dataikan)
     {
         $this->validate($request,[
-            'nama_nelayan' => 'required',
-    		'alamat_nelayan' => 'required',
-            'notelp_nelayan' => 'required'
+            'nama_ikan' => 'required',
+            'harga_ikan' => 'required'
          ]);
-         $nelayan->nama_nelayan = $request->nama_nelayan;
-         $nelayan->alamat_nelayan = $request->alamat_nelayan;
-         $nelayan->notelp_nelayan = $request->notelp_nelayan;
-         $nelayan->save();
-         return redirect('/nelayan');
+         $dataikan->nama_ikan = $request->nama_ikan;
+         $dataikan->harga_ikan = $request->harga_ikan;
+         $dataikan->save();
+         return redirect('/dataikankoperasi');
+        
     }
 
-    public function delete(Nelayan $nelayan)
+    public function delete(Dataikan $dataikan)
     {
-        $nelayan->delete();
-        return redirect('/nelayan');
+        $dataikan->delete();
+        return redirect('/dataikankoperasi');
     }
 
     /**

@@ -51,7 +51,7 @@ class UserController extends Controller
         $this->validate($request,[
     		'nama' => 'required',
     		'username' => 'required|unique:users,username',
-    		'email' => 'required|unique:users,email',
+    		// 'email' => 'required|unique:users,email',
             'telepon' => 'required',
             'alamat' => 'required',
     	]);
@@ -60,7 +60,7 @@ class UserController extends Controller
     		'nama' => $request->nama,
     		'username' => $request->username,
             'password' => Hash::make('admintpi123'),
-    		'email' => $request->email,
+    		// 'email' => $request->email,
             'telepon' => $request->telepon,
     		'alamat' => $request->alamat,
             'level' => 'TPI',
@@ -74,7 +74,7 @@ class UserController extends Controller
         $this->validate($request,[
     		'nama' => 'required',
     		'username' => 'required|unique:users,username',
-    		'email' => 'required|unique:users,email',
+    		// 'email' => 'required|unique:users,email',
             'telepon' => 'required',
             'alamat' => 'required',
     	]);
@@ -83,7 +83,7 @@ class UserController extends Controller
     		'nama' => $request->nama,
     		'username' => $request->username,
             'password' => Hash::make('koperasi123'),
-    		'email' => $request->email,
+    		// 'email' => $request->email,
             'telepon' => $request->telepon,
     		'alamat' => $request->alamat,
             'level' => 'koperasi',
@@ -111,14 +111,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function editTPI($user)
+    public function editTPI(User $user)
     {
-        $user = User::where('id_user', $user)->first();
+        $user = User::where('id_user', $user->id_user)->first();
         return view('admin.edituser', compact('user'));
     }
-    public function editKoperasi($user)
+    public function editKoperasi(User $user)
     {
-        $user = User::where('id_user', $user)->first();
+        $user = User::where('id_user', $user->id_user)->first();
         return view('admin.editkoperasi', compact('user'));
     }
 
@@ -131,17 +131,17 @@ class UserController extends Controller
      */
     public function updateTPI(Request $request, User $user)
     {
-        $this->validate($request,[
+        $request->validate([
             'nama' => 'required',
-    		'username' => 'required|' . Rule::unique('users')->ignore($user->id_user, 'id_user'),
-    		'email' => 'required|' . Rule::unique('users')->ignore($user->id_user, 'id_user'),
+    		'username' => ['required' , Rule::unique('users')->ignore($user->id_user, 'id_user')],
+    		// 'email' => ['required' , Rule::unique('users')->ignore($user->id_user, 'id_user')],
             'telepon' => 'required',
             'alamat' => 'required',
          ]);
-         User::where('id_user',$user->id)->update([
+         User::where('id_user',$user->id_user)->update([
             'nama' => $request->nama,
             'username' => $request->username,
-            'email' => $request->email,
+            // 'email' => $request->email,
             'telepon' => $request->telepon,
             'alamat' => $request->alamat,
          ]);
@@ -153,14 +153,14 @@ class UserController extends Controller
         $this->validate($request,[
             'nama' => 'required',
     		'username' => 'required|' . Rule::unique('users')->ignore($user->id_user, 'id_user'),
-    		'email' => 'required|'. Rule::unique('users')->ignore($user->id_user, 'id_user'),
+    		// 'email' => 'required|'. Rule::unique('users')->ignore($user->id_user, 'id_user'),
             'telepon' => 'required',
             'alamat' => 'required',
          ]);
          User::where('id_user',$user->id_user)->update([
             'nama' => $request->nama,
             'username' => $request->username,
-            'email' => $request->email,
+            // 'email' => $request->email,
             'telepon' => $request->telepon,
             'alamat' => $request->alamat,
          ]);

@@ -1,5 +1,5 @@
 @extends("layouts/main")
-@section("title","Data Ikan")
+@section("title","Rekap Keseluruhan")
 @section("content")
 @include("layouts/navbar")
 @include("layouts/sidebar")
@@ -7,36 +7,39 @@
 <div class="main-content">
 <section class="section">
           <div class="section-header">
-            <h1>Data Ikan</h1>
+            <h1>Data Produksi Penangkapan Ikan</h1>
           </div>
 
           <div class="section-body">
+
             <div class="row">
               <div class="col">
                 <div class="card">
-                  {{-- <div class="card-header">
-                  <a href="{{url('tambahdataikan')}}" class="btn btn-success">Tambah</a>
-                  </div> --}}
+                  <div class="card-header">
+                  <a href="{{url('tambahdata')}}" class="btn btn-success">Tambah</a>
+                  </div>
                   <div class="card-body">
                     <div class="table-responsive">
                       <table class="table table-bordered table-md">
                         <tr>
-                          <th width="50px">No</th>
-                          <th>Nama Ikan</th>
-                          <th>Harga Ikan</th>
-                          {{-- <th>Aksi</th> --}}
+                          <th>No</th>
+                          <th>Nama Koperasi</th>
+                          <th>Target Kg</th>
+                          <th>Target Rp.</th>
+                          <th>Aksi</th>
                         </tr>
-                        @foreach($dataikan as $d)
+                        {{-- @foreach($tpi as $t)
                         <tr>
                           <td>{{$loop->iteration}}</td>
-                          <td>{{$d->nama_ikan}}</td>
-                          <td>{{$d->harga_ikan}}</td>
-                          {{-- <td>
-                            <a href="editdataikan/{{ $d->id_ikan }}" class="btn btn-primary mr-2">Edit</a>
-                            <a href="hapusdataikan/{{ $d->id_ikan }}" class="btn btn-danger">hapus</a>
-                          </td> --}}
+                          <td>{{$t->nama_tpi}}</td>
+                          <td>{{$t->alamat_tpi}}</div>
+                          <td>{{$t->notelp_tpi}}</td></td>
+                          <td>
+                            <a href="edittpi/{{ $t->id_tpi }}" class="btn btn-primary mr-2">Edit</a>
+                            <a href="hapustpi/{{ $t->id_tpi }}" class="btn btn-danger">hapus</a>
+                          </td>
                         </tr>
-                        @endforeach
+                        @endforeach --}}
                       </table>
                     </div>
                   </div>

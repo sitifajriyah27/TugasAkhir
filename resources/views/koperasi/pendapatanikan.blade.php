@@ -1,47 +1,50 @@
 @extends("layouts/main")
-@section("title","Data Ikan")
+@section("title","Pendapatan Ikan")
 @section("content")
 @include("layouts/navbar")
-@include("layouts/sidebar")
+@include("layouts/sidebar-koperasi")
 
 <div class="main-content">
 <section class="section">
           <div class="section-header">
-            <h1>Data Ikan</h1>
+            <h1>Pendapatan Ikan</h1>
           </div>
 
           <div class="section-body">
             <div class="row">
               <div class="col">
                 <div class="card">
-                  {{-- <div class="card-header">
-                  <a href="{{url('tambahdataikan')}}" class="btn btn-success">Tambah</a>
-                  </div> --}}
+                  <div class="card-header">
+                  <a href="{{url('#')}}" class="btn btn-success">Tambah</a>
+                  </div>
                   <div class="card-body">
                     <div class="table-responsive">
                       <table class="table table-bordered table-md">
                         <tr>
-                          <th width="50px">No</th>
-                          <th>Nama Ikan</th>
-                          <th>Harga Ikan</th>
-                          {{-- <th>Aksi</th> --}}
+                          <th>Keterangan</th>
+                          <th>Satuan</th>
+                          <th>Koperasi Primer</th>
+                          <th>Cabang Koperasi</th>
+                          <th>Jumlah</th>
                         </tr>
-                        @foreach($dataikan as $d)
+                        {{-- @foreach($pendapatan as $p)
                         <tr>
-                          <td>{{$loop->iteration}}</td>
-                          <td>{{$d->nama_ikan}}</td>
-                          <td>{{$d->harga_ikan}}</td>
-                          {{-- <td>
-                            <a href="editdataikan/{{ $d->id_ikan }}" class="btn btn-primary mr-2">Edit</a>
-                            <a href="hapusdataikan/{{ $d->id_ikan }}" class="btn btn-danger">hapus</a>
-                          </td> --}}
+                          <td>{{$p->ket}}</td>
+                          <td>{{$p->satuan}}</td>
+                          <td>{{$p->kptk}}</td>
+                          <td>{{$p->ck}}</td>
+                          <td>{{$p->jumlah}}</td>
+                          <td>
+                            <a href="editdataikan/{{ $p->id_pendapatan }}" class="btn btn-primary mr-2">Edit</a>
+                            <a href="hapusdataikan/{{ $p->id_pendapatan }}" class="btn btn-danger">hapus</a>
+                          </td>
                         </tr>
-                        @endforeach
+                        @endforeach --}}
                       </table>
                     </div>
                   </div>
                   <div class="card-footer text-right">
-                    {{-- <nav class="d-inline-block">
+                    <nav class="d-inline-block">
                       <ul class="pagination mb-0">
                         <li class="page-item disabled">
                           <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
@@ -55,7 +58,7 @@
                           <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
                         </li>
                       </ul>
-                    </nav> --}}
+                    </nav>
                   </div>
                 </div>
               </div>

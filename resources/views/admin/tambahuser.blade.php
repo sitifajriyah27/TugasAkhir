@@ -31,13 +31,13 @@
                           <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                       <label>Email</label>
                       <input type="text" name="email" class="form-control @error('email') is-invalid @enderror">
                       @error('email')
                           <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                       <label>Telepon</label>
                       <input type="text" name="telepon" class="form-control @error('telepon') is-invalid @enderror">

@@ -6,3 +6,6 @@
  */
 
 "use strict";
+$(".logout").click(function () {
+    $("#formLogout").submit();
+});
