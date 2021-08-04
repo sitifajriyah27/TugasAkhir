@@ -7,9 +7,9 @@
             <a href="index.html">St</a>
           </div>
           <ul class="sidebar-menu">
-              <li><a class="nav-link" href="{{url('dashboard')}}"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
-              <li><a class="nav-link" href="{{url('pegawai')}}"><i class="fas fa-columns"></i> <span>Data Pegawai</span></a></li>
-              <li><a class="nav-link" href="{{url('dataikankoperasi')}}"><i class="fas fa-columns"></i> <span>Data Ikan</span></a></li>
+              <li><a class="nav-link" href="{{url('koperasi/dashboard')}}"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+              <li><a class="nav-link" href="{{url('/pegawai')}}"><i class="fas fa-user"></i> <span>Data Pegawai</span></a></li>
+              <li><a class="nav-link" href="{{url('/dataikankoperasi')}}"><i class="fas fa-columns"></i> <span>Data Ikan</span></a></li>
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-anchor"></i> <span>Nelayan</span></a>
                 <ul class="dropdown-menu">

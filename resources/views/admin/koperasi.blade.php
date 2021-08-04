@@ -44,8 +44,14 @@
                           <td>{{$k->level}}</td>
                           <td><img src="{{ asset('img/avatar/'.$k->image) }}" alt="" height="50"></td>
                           <td>
-                            <a href="editkoperasi/{{ $k->id_user }}" class="btn btn-primary mr-2">Edit</a>
-                            <a href="hapuskoperasi/{{ $k->id_user }}" class="btn btn-danger">hapus</a>
+                            <div class="row">
+                              <a href="editkoperasi/{{ $k->id_user }}" class="btn btn-primary mr-2">
+                                <i class="fas fa-edit fa-sm fa-fw"></i>
+                              </a>
+                              <a href="hapuskoperasi/{{ $k->id_user }}" class="btn btn-danger">
+                                <i class="fas fa-trash-alt fa-sm fa-fw"></i>
+                              </a>
+                            </div>
                           </td>
                         </tr>
                         @endforeach

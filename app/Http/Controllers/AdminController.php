@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Nelayan;
 use Illuminate\Http\Request;
 use \App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -14,8 +16,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        
-            return view("admin/dashboard");
+            $tpi = User::where('level','TPI')->count();   
+            $koperasi = User::where('level','koperasi')->count();   
+            $nelayan = Nelayan::all()->count();   
+            return view("admin/dashboard", compact('tpi','koperasi','nelayan'));
     }
 
 

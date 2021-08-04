@@ -2210,6 +2210,7 @@ pre {
 .background-walk-y {
   background-repeat: no-repeat;
   background-position: 0 0%;
+  padding-top: 100px;
   -webkit-animation-name: backgroundWalkY;
           animation-name: backgroundWalkY;
   -webkit-animation-duration: 70s;

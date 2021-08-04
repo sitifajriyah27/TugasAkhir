@@ -21,7 +21,7 @@
                     <h4>Total TPI</h4>
                   </div>
                   <div class="card-body">
-                    14
+                    {{$tpi}}
                   </div>
                 </div>
               </div>
@@ -36,7 +36,7 @@
                     <h4>Total Koperasi</h4>
                   </div>
                   <div class="card-body">
-                    14
+                    {{$koperasi}}
                   </div>
                 </div>
               </div>
@@ -51,7 +51,7 @@
                     <h4>Total Nelayan</h4>
                   </div>
                   <div class="card-body">
-                    1,201
+                    {{$nelayan}}
                   </div>
                 </div>
               </div>
